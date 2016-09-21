@@ -23,3 +23,24 @@
     <label for = "width">Width</label>
     <input id = "width" name = "width" type = "number" class = "form-control">
   </div>
+  <div class = "form-group">
+    <label for = "length">Length</label>
+    <input id = "length" name = "length" type = "text" class = "form-control">
+  </div>
+  <div class = "form-group">
+    <label for = "fin">Fin</label>
+    <input id = "fin" name = "fin" type = "number" class = "form-control">
+  </div>
+  <div class = "form-group">
+    <label for = "tail">Tail</label>
+    <input id = "tail" name = "tail" type = "text" class = "form-control">
+  </div>
+  <div class = "form-group">
+    <label for = "companyId">Company</label>
+    <select id = "companyId" name = "companyId" text = "text">
+      #foreach ($company in $companies)
+      <option value = "$company.getId()">$company.getName()</option>
+      #end
+  </div>
+  <button type = "submit" class = "btn btn-default">Add board</button>
+</form>

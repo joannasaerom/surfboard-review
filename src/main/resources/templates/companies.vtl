@@ -1,0 +1,10 @@
+<h2>View Companies:</h2>
+#if (!($companies.isEmpty()))
+<ul>
+  #foreach ($company in $companies)
+  <li><a href="#">$company.getName()</a></li>
+  #end
+</ul>
+#else
+  <p>Looks like there aren't any companies! <a href="#">Add one now</a></p>
+#end
