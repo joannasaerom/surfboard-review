@@ -23,13 +23,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/companies/:companyId", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
-      model.put("company", company);
-      model.put("template", "templates/company.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
+    // get("/companies/:companyId", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+    //   model.put("company", company);
+    //   model.put("template", "templates/company.vtl");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
     get("/companies/:companyId/boards", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();

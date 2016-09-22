@@ -1,3 +1,6 @@
+body{
+  font-family: 'Khand', sans-serif;
+}
 .bannerText{
   position: absolute;
   top: 180px;
@@ -12,7 +15,7 @@ h1{
   padding-left: 15px;
   padding-right: 15px;
   margin-left: 10%;
-  width: 600px;
+  width: 650px;
 }
 
 a{
@@ -83,8 +86,8 @@ h2{
   -webkit-filter: grayscale(10%);
 }
 .mainBanner img:hover {
-  transform: scale(1.5);
-  -webkit-transform: scale(1.5);
+  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
   filter: grayscale(70%);
   -webkit-filter: grayscale(70%);
 }
@@ -96,13 +99,16 @@ h2{
   margin-top: 2%;
 }
 .bannerText button {
-  background: none;
+  background: rgba(255, 255, 255, 0.5);
   border: 2px solid black;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 17px;
   color: black;
   font-weight: bolder;
   border-radius: 0px;
+}
+
+button:first-child {
   margin-left: 10%;
 }
 .bannerText button:hover {
@@ -112,4 +118,52 @@ h2{
 }
 .bannerText a:hover{
   background-color: rgba(255,255,255,0);
+}
+
+.companiesPage p{
+  margin-bottom: 5%;
+  font-size: 20px;
+}
+
+.hoverImage{
+  position: relative;
+  display: inline-block;
+  background-color: rgba(0,0,0,0);
+  overflow: hidden;
+  width: 350px;
+  height: 300px;
+  float: left;
+}
+.hoverImage img{
+  opacity: 1;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  margin: 0 auto;
+}
+
+.hoverText {
+  position: absolute;
+  top: 33%;
+  opacity: 0;
+}
+
+.hoverImage a:hover{
+  color: white;
+  text-decoration: none;
+  background-color: none;
+}
+.hoverText p{
+  font-size: 50px;
+  text-align: center;
+  width: 350px;
+}
+.hoverImage:hover .hoverText{
+  opacity: 1;
+}
+.hoverImage:hover img{
+  opacity: 0;
+  background-color: rgba(0,0,0,1);
+}
+.hoverImage:hover{
+  background-color: rgba(0,0,0,1);
 }

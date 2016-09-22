@@ -8,11 +8,21 @@
   <h2>View Companies:</h2>
   #if (!($companies.isEmpty()))
   <p>Don't see the company you're looking for? <a href="/companies/new">Add one now!</a></p>
-  <ul>
+  #foreach ($company in $companies)
+  <div class="hoverImage">
+    <a href="/companies/$company.getId()">
+      <img src="$company.getURL()" class="img-responsive">
+      <div class="hoverText">
+        <p>$company.getName()</p>
+      </div>
+    </a>
+  </div>
+  #end
+  <!-- <ul>
     #foreach ($company in $companies)
     <li class="animated slideInLeft"><img src="$company.getURL()" width="200px"><a href="/companies/$company.getId()">$company.getName()</a></li>
     #end
-  </ul>
+  </ul> -->
   #else
     <p>Looks like there aren't any companies! <a href="/companies/new">Add one now.</a></p>
   #end
