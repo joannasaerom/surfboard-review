@@ -1,0 +1,36 @@
+<!-- Navigation Bar -->
+<div class="nav">
+  <a href="/">Home</a> |
+  <a href="/companies">View Companies</a> |
+  <a href="#">Something</a>
+</div>
+<div class="center">
+  <h2>Update $company.getName():</h2>
+  <form action="/companies/" method="post">
+    <input id="companyId" name="companyId" type="hidden" value="$company.getId()">
+    <div class="form-group">
+      <label for="name">Company Name</label>
+      <input id="name" type="text" name="name" value="$company.getName()">
+    </div>
+    <div class="form-group">
+      <label for="location">Company Location</label>
+      <input id="location" type="text" name="location" value="$company.getLocation()">
+    </div>
+    <div class="form-group">
+      <label for="imgURL">Company Image URL</label>
+      <input id="imgURL" type="text" name="imgURL" value="$company.getURL()">
+    </div>
+    <div class="form-group">
+      <label for="website">Company Website Address</label>
+      <input id="website" type="text" name="website" value="$company.getWebsite()">
+    </div>
+    <div class="form-group">
+      <label for="description">Company Description</label>
+      <input id="description" type="text" name="description" value="$company.getDescription()">
+    </div>
+    <div class="spacing">
+      <button type="submit" name="button" class="btn btn-default">Update</button>
+      <a class="noHover" href="/companies/$company.getId()/delete"><button type="submit" name="button" class="btn btn-default">Delete</button></a>
+    </div>
+  </form>
+</div>

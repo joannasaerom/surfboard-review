@@ -4,17 +4,18 @@
   <a href="/companies">View Companies</a> |
   <a href="#">Something</a>
 </div>
-<div class="boardPage">
-  <h2>$board.getName() <a href="#" title="Edit Board Information"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a href="#" title="Delete Board"><i class="fa fa-trash-o" aria-hidden="true"></i></a></h2>
-  <img src="$board.getimgURL()">
-  <h3><strong>Board Type:</strong> $board.getBoardType()</h3>
-  <h3><strong>Thickness:</strong> $board.getThickness()</h3>
-  <h3><strong>Price:</strong> $$board.getPrice()</h3>
-  <h3><strong>Width:</strong> $board.getWidth()</h3>
-  <h3><strong>Length:</strong> $board.getLength()</h3>
-  <h3><strong>Number of Fin(s):</strong> $board.getFin()</h3>
-  <h3><strong>Tail:</strong> $board.getTail()</h3>
-
+<div class="center">
+  <h2>$board.getName() <span class="editIcons"> <a href="/companies/$company.getId()/boards/$board.getId()/edit" title="Edit Board Information"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a href="/companies/$company.getId()/boards/$board.getId()/delete" title="Delete Board"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span></h2>
+  <img class="boardImg" src="$board.getimgURL()">
+  <div class="description">
+    <h3><strong>Board Type:</strong> $board.getBoardType()</h3>
+    <h3><strong>Thickness:</strong> $board.getThickness()</h3>
+    <h3><strong>Price:</strong> $$board.getPrice()</h3>
+    <h3><strong>Width:</strong> $board.getWidth()</h3>
+    <h3><strong>Length:</strong> $board.getLength()</h3>
+    <h3><strong>Number of Fin(s):</strong> $board.getFin()</h3>
+    <h3><strong>Tail:</strong> $board.getTail()</h3>
+  </div>
   <hr>
 
   <form action="" method="post">

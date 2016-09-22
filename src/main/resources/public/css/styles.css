@@ -1,5 +1,6 @@
 body{
   font-family: 'Khand', sans-serif;
+  color: black;
 }
 .bannerText{
   position: absolute;
@@ -13,9 +14,9 @@ h1{
   color: white;
   font-size: 5.5em;
   padding-left: 15px;
-  padding-right: 15px;
+  /*padding-right: 15px;*/
   margin-left: 10%;
-  width: 650px;
+  width: 430px;
 }
 
 a{
@@ -64,7 +65,7 @@ select{
 select:focus{
   outline: none;
 }
-.companiesPage, .boardsPage, .boardPage, .companyPage{
+.center{
   text-align: center;
 }
 .companiesPage li a {
@@ -76,8 +77,9 @@ li{
   list-style-type: none;
 }
 h2{
-  font-family: 'Montserrat Subrayada', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 5em;
+  text-transform: uppercase;
 }
 .mainBanner img {
   transition: all 2s ease;
@@ -106,9 +108,10 @@ h2{
   color: black;
   font-weight: bolder;
   border-radius: 0px;
+  margin-left: 0px;
 }
 
-button:first-child {
+.bannerText .left {
   margin-left: 10%;
 }
 .bannerText button:hover {
@@ -120,7 +123,7 @@ button:first-child {
   background-color: rgba(255,255,255,0);
 }
 
-.companiesPage p{
+p{
   margin-bottom: 5%;
   font-size: 20px;
 }
@@ -136,8 +139,8 @@ button:first-child {
 }
 .hoverImage img{
   opacity: 1;
-  -webkit-transition: opacity 0.5s;
-  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
   margin: 0 auto;
 }
 
@@ -166,4 +169,46 @@ button:first-child {
 }
 .hoverImage:hover{
   background-color: rgba(0,0,0,1);
+}
+.editIcons{
+  font-size: 25px;
+  font-family: 'Khand', sans-serif;
+  margin-left: 5px;
+}
+.editIcons a:hover{
+  background: none;
+  color: black;
+}
+.description{
+  text-align: left;
+  width: 800px;
+  margin: 0 auto;
+}
+.btn, .btn-default {
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid black;
+  text-transform: uppercase;
+  font-size: 17px;
+  color: black;
+  font-weight: bolder;
+  border-radius: 0px;
+  margin-left: 0px;
+}
+.btn:hover, .btn-default:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid black;
+  border-radius: 0px;
+}
+form{
+  margin-top: 5%;
+}
+a.noHover:hover {
+  background: none;
+  color: black;
+}
+.spacing{
+  margin: 15px;
+}
+.boardImg{
+  height: 500px;
 }

@@ -4,28 +4,30 @@
   <a href="/companies">View Companies</a> |
   <a href="#">Something</a>
 </div>
+<div class="center">
+  <h2>Add a new company:</h2>
+  <form action="/companies" method="post">
+    <div class="form-group">
+      <label for="name">Company Name</label>
+      <input id="name" type="text" name="name">
+    </div>
+    <div class="form-group">
+      <label for="location">Company Location</label>
+      <input id="location" type="text" name="location">
+    </div>
+    <div class="form-group">
+      <label for="imgURL">Company Image URL</label>
+      <input id="imgURL" type="text" name="imgURL">
+    </div>
+    <div class="form-group">
+      <label for="website">Company Website Address</label>
+      <input id="website" type="text" name="website">
+    </div>
+    <div class="form-group">
+      <label for="description">Company Description</label>
+      <input id="description" type="text" name="description">
+    </div>
 
-<form action="/companies" method="post">
-  <div class="form-group">
-    <label for="name">Company Name</label>
-    <input id="name" type="text" name="name">
-  </div>
-  <div class="form-group">
-    <label for="location">Company Location</label>
-    <input id="location" type="text" name="location">
-  </div>
-  <div class="form-group">
-    <label for="imgURL">Company Image URL</label>
-    <input id="imgURL" type="text" name="imgURL">
-  </div>
-  <div class="form-group">
-    <label for="website">Company Website Address</label>
-    <input id="website" type="text" name="website">
-  </div>
-  <div class="form-group">
-    <label for="description">Company Description</label>
-    <input id="description" type="text" name="description">
-  </div>
-
-  <button type="submit" name="button" class="btn btn-default">Add Company</button>
-</form>
+    <button type="submit" name="button" class="btn btn-default">Add Company</button>
+  </form>
+</div>

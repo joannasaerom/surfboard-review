@@ -4,10 +4,28 @@
   <a href="/companies">View Companies</a> |
   <a href="#">Something</a>
 </div>
-<div class="companyPage">
-  <h2>$company.getName() <a href="#" title="Edit Company"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a href="#" title="Delete Company"><i class="fa fa-trash-o" aria-hidden="true"></i></a></h2>
+<div class="center">
+  <h2>$company.getName() <span class="editIcons"> <a href="/companies/$company.getId()/edit" title="Edit Company"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a> <a href="/companies/$company.getId()/delete" title="Delete Company"><i class="fa fa-trash-o" aria-hidden="true"></i></a></span></h2>
   <img src="$company.getURL()">
-  <h3><strong>Location:</strong> $company.getLocation()</h3>
-  <h3><strong>Website:</strong><a href="$company.getWebsite()"> $company.getWebsite()</a></h3>
-  <h3><strong>Description:</strong> $company.getDescription()</h3>
+  <div class="description">
+    <h3><strong>Location:</strong> $company.getLocation()</h3>
+    <h3><strong>Website:</strong><a href="$company.getWebsite()"> $company.getWebsite()</a></h3>
+    <h3><strong>Description:</strong> $company.getDescription()</h3>
+  </div>
+  <hr>
+  #if (!($boards.isEmpty()))
+  <p>Don't see the board you're looking for? <a href="/companies/$company.getId()/boards/new">Add one now!</a></p>
+  #foreach ($board in $boards)
+  <div class="hoverImage">
+    <a href="/companies/$company.getId()/boards/$board.getId()">
+      <img src="$board.getimgURL()" class="img-responsive">
+      <div class="hoverText">
+        <p>$board.getName()</p>
+      </div>
+    </a>
+  </div>
+  #end
+  #else
+    <p>Looks like there aren't any boards! <a href="/companies/$company.getId()/boards/new">Add one now.</a></p>
+  #end
 </div>

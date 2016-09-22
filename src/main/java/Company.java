@@ -24,6 +24,26 @@ public class Company {
     description = _description;
   }
 
+  public void setName(String _name){
+    this.name = _name;
+  }
+
+  public void setLocation(String _location){
+    this.location = _location;
+  }
+
+  public void setURL(String _imgURL) {
+    this.imgURL = _imgURL;
+  }
+
+  public void setWebsite(String _website) {
+    this.website = _website;
+  }
+
+  public void setDescription(String _description) {
+    this.description = _description;
+  }
+
   public String getName() {
     return name;
   }
@@ -100,11 +120,7 @@ public class Company {
     }
   }
 
-  public void update(String _name,
-                     String _location,
-                     String _imgURL,
-                     String _website,
-                     String _description)
+  public void update()
     {
       try(Connection con = DB.sql2o.open()) {
         String sql = "UPDATE companies SET name = :name, location = :location, imgURL = :imgURL, website = :website, description = :description WHERE id = :id;";

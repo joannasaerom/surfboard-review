@@ -23,13 +23,20 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    // get("/companies/:companyId", (request, response) -> {
-    //   Map<String, Object> model = new HashMap<String, Object>();
-    //   Company company = Company.find(Integer.parseInt(request.params(":companyId")));
-    //   model.put("company", company);
-    //   model.put("template", "templates/company.vtl");
-    //   return new ModelAndView(model, layout);
-    // }, new VelocityTemplateEngine());
+    get("/companies/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/company-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+      model.put("company", company);
+      model.put("boards", company.getBoards());
+      model.put("template", "templates/company.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
     get("/companies/:companyId/boards", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
@@ -37,6 +44,15 @@ public class App {
       model.put("company", company);
       model.put("boards", company.getBoards());
       model.put("template", "templates/boards.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId/boards/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+      model.put("company", company);
+      model.put("companies", Company.all());
+      model.put("template", "templates/board-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
@@ -69,20 +85,6 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/companies/:companyId/boards/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
-      model.put("company", company);
-      model.put("template", "templates/board-form.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-    get("/companies/new", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-      model.put("template", "templates/company-form.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
     post("/companies", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       String name = request.queryParams("name");
@@ -93,6 +95,93 @@ public class App {
       Company company = new Company(name, location, imgURL, website, description);
       company.save();
       response.redirect("/companies");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+      model.put("company", company);
+      model.put("template", "templates/company-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/companies/:companyId/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int companyId = Integer.parseInt(request.queryParams("companyId"));
+      Company company = Company.find(companyId);
+      company.setName(request.queryParams("name"));
+      company.setLocation(request.queryParams("location"));
+      company.setURL(request.queryParams("imgURL"));
+      company.setWebsite(request.queryParams("website"));
+      company.setDescription(request.queryParams("description"));
+      company.update();
+      response.redirect("/companies/" + companyId);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+      model.put("company", company);
+      model.put("template", "templates/company-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/companies/:companyId/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.queryParams("companyId")));
+      company.delete();
+      response.redirect("/companies");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId/boards/:boardId/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Company company = Company.find(Integer.parseInt(request.params(":companyId")));
+      Board board = Board.find(Integer.parseInt(request.params(":boardId")));
+      model.put("company", company);
+      model.put("board", board);
+      model.put("companies", Company.all());
+      model.put("template", "templates/board-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/companies/:companyId/boards/:boardId/edit", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      int companyId = Integer.parseInt(request.queryParams("companyId"));
+      int boardId = Integer.parseInt(request.queryParams("boardId"));
+      Company company = Company.find(companyId);
+      Board board = Board.find(boardId);
+      board.setWidth(Integer.parseInt(request.queryParams("width")));
+      board.setLength(request.queryParams("length"));
+      board.setFin(Integer.parseInt(request.queryParams("fin")));
+      board.setTail(request.queryParams("tail"));
+      board.setCompanyId(Integer.parseInt(request.queryParams("companyId")));
+      board.setName(request.queryParams("name"));
+      board.setimgURL(request.queryParams("imgURL"));
+      board.setBoardType(request.queryParams("boardType"));
+      board.setThickness(Integer.parseInt(request.queryParams("thickness")));
+      board.setPrice(Integer.parseInt(request.queryParams("price")));
+      board.update();
+      response.redirect("/companies/" + companyId +"/boards/" + boardId);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/companies/:companyId/boards/:boardId/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Board board = Board.find(Integer.parseInt(request.params(":boardId")));
+      model.put("board", board);
+      model.put("template", "templates/board-edit.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/companies/:companyId/boards/:boardId/delete", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Board board = Board.find(Integer.parseInt(request.queryParams("boardId")));
+      // int companyId = Integer.parseInt(request.params(":companyId"));
+      board.delete();
+      response.redirect("/companies/");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
   }

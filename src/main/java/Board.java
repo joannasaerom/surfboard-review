@@ -39,10 +39,51 @@ public class Board{
     tail = _tail;
     companyId = _companyId;
   }
+  public void setWidth(double _width){
+    this.width = _width;
+  }
+
+  public void setLength(String _length){
+    this.length = _length;
+  }
+
+  public void setFin(int _fin){
+    this.fin = _fin;
+  }
+
+  public void setTail(String _tail){
+    this.tail = _tail;
+  }
+
+  public void setCompanyId(int _companyId){
+    this.companyId = _companyId;
+  }
+
+  public void setName(String _name) {
+    this.name = _name;
+  }
+
+  public void setimgURL(String _url){
+    this.imgURL = _url;
+  }
+
+  public void setBoardType(String _boardType) {
+    this.boardType = _boardType;
+  }
+
+  public void setThickness(double _thickness){
+    this.thickness = _thickness;
+  }
+
+  public void setPrice(double _price){
+    this.price = _price;
+  }
+
 
   public double getWidth() {
     return width;
   }
+
   public String getName() {
     return name;
   }
@@ -113,7 +154,7 @@ public class Board{
 
   public void save(){
     try(Connection con = DB.sql2o.open()) {
-      String sql = "INSERT INTO boards (name, imgURL, boardType, thickness, price, length, fin, tail, companyId, width) VALUES (:name, :imgURL, :boardType, :thickness, :price, :length, :fin, :tail, :companyId, :width) WHERE id = :id;";
+      String sql = "INSERT INTO boards (name, imgURL, boardType, thickness, price, length, fin, tail, companyId, width) VALUES (:name, :imgURL, :boardType, :thickness, :price, :length, :fin, :tail, :companyId, :width)";
       this.id = (int) con.createQuery(sql, true)
         .addParameter("name", this.name)
         .addParameter("imgURL", this.imgURL)
@@ -139,16 +180,7 @@ public class Board{
     }
   }
 
-  public void update(String _name,
-                     String _imgURL,
-                     String _boardType,
-                     double _thickness,
-                     double _price,
-                     String _length,
-                     int _fin,
-                     double _width,
-                     String _tail,
-                     int _companyId)
+  public void update()
     {
       try(Connection con = DB.sql2o.open()) {
         String sql = "UPDATE boards SET (name, imgURL, boardType, thickness, price, " +
