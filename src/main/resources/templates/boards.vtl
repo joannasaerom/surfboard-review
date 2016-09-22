@@ -1,10 +1,18 @@
-<h2>View Boards:</h2>
-#if (!($boards.isEmpty()))
-<ul>
-  #foreach ($board in $boards)
-  <li><a href="#">$board.getName()</a></li>
+<!-- Navigation Bar -->
+<div class="nav">
+  <a href="/">Home</a> |
+  <a href="/companies">View Companies</a> |
+  <a href="#">Something</a>
+</div>
+<div class="boardsPage">
+  <h2>View Boards:</h2>
+  #if (!($boards.isEmpty()))
+  <ul>
+    #foreach ($board in $boards)
+    <li><a href="/companies/$company.getId()/boards/$board.getId()">$board.getName()</a></li>
+    #end
+  </ul>
+  #else
+    <p>Looks like there aren't any boards! <a href="/companies/$company.getId()/boards/new">Add one now</a></p>
   #end
-</ul>
-#else
-  <p>Looks like there aren't any boards! <a href="#">Add one now</a></p>
-#end
+</div>

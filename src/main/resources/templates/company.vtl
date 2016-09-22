@@ -1,5 +1,13 @@
-<h2>$company.getName() <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h2>
-<img src="$company.getURL()">
-<h3><strong>Location:</strong> $company.getLocation()</h3>
-<h3><strong>Website:</strong> $company.getWebsite()</h3>
-<h3><strong>Description:</strong> $company.getDescription()</h3>
+<!-- Navigation Bar -->
+<div class="nav">
+  <a href="/">Home</a> |
+  <a href="/companies">View Companies</a> |
+  <a href="#">Something</a>
+</div>
+<div class="companyPage">
+  <h2>$company.getName() <a href="#"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></h2>
+  <img src="$company.getURL()">
+  <h3><strong>Location:</strong> $company.getLocation()</h3>
+  <h3><strong>Website:</strong><a href="$company.getWebsite()"> $company.getWebsite()</a></h3>
+  <h3><strong>Description:</strong> $company.getDescription()</h3>
+</div>
